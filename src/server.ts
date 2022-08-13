@@ -6,6 +6,8 @@ import { findByUsersController } from "./useCase/useCaseFindByUsers/controller";
 import { createUserController } from "./useCase/useCaseCreateUser/controller";
 import { updateUserController } from "./useCase/useCaseUpdateUser/controller";
 import { deleteUserController } from "./useCase/useCaseDeleteUser/controller";
+import { Auth } from "./useCase/useCaseAuth/controller";
+import { login } from "./useCase/useCaseLogin/controller";
 
 dotenv.config()
 const app = express()
@@ -16,7 +18,7 @@ const port = process.env.PORT || 4000
 
 app.listen(port,() => console.log(`Servidor em pé na porta ${port}`))
 
-app.get("/",async (req,res) => {
+app.post("/",async (req,res) => {
   await findByUsersController(req,res)
 })
 
@@ -34,4 +36,12 @@ app.put("/update-user",async (req,res) => {
 
 app.delete("/delete-user",async (req,res) => {
   await deleteUserController(req,res)
+})
+
+app.post("/auth",async (req,res) => {
+  await Auth(req,res)
+})
+
+app.post("/login",async(req,res) => {
+  await login(req,res)
 })
