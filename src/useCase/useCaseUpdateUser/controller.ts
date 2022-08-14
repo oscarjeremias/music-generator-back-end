@@ -13,6 +13,6 @@ export async function updateUserController(
     return res.status(400).send("Api key invalida")
   }else {
   const sms = await updateUserDB(data_user)
-  return res.status(201).send(sms || "update user sucess")
+  return res.status(201).send(sms || "usuário actualizado com sucesso")
   }
 }

@@ -13,6 +13,6 @@ export async function deleteUserController(
     return res.status(400).send("Api key invalida")
   }else {
   await deleteUserDB(email)
-  return res.status(201).send("delete user sucess")
+  return res.status(201).send("usuário deletado com sucesso)
   }
 }
