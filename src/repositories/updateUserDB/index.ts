@@ -21,15 +21,15 @@ export async function updateUserDB(prop:any) {
 
       const userUpdate = await SUser.updateOne({ email:prop.email }, { password: passwordCrypto })
 
-      return !userUpdate && "there is no user with these emails"
+      return !userUpdate && "não há usuário com esse email"
 
     // update email
     }if (prop.emailExits) {
       const userExits = await findByUserDB(prop.emailExits)
       if(!userExits) {
-        return "there is no user with these emails"
+        return "não há usuário com esse email"
       }else if(userExits?.email === prop.email) {
-        return "there is already a user with this email"
+        return "já existe um usuário com este email"
       }else {
         await SUser.updateOne({ email:prop.emailExits }, { email: prop.email })
       }
@@ -39,7 +39,7 @@ export async function updateUserDB(prop:any) {
       const keyObject = Object.keys(prop)[1]
       const userUpdate = await SUser.updateOne({ email:prop.email }, { [keyObject]: prop[keyObject] })
 
-      return !userUpdate && "there is no user with these emails"
+      return !userUpdate && "não há usuário com esse email"
 
     }
   } catch(error) {

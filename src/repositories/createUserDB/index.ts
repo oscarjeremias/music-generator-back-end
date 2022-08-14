@@ -15,7 +15,7 @@ export async function createUserDB({ _id,name,email,password,url_graphcms }: IUs
     const userExist = await findByUserDB(email)
 
     if(userExist) {
-      return "there is already a user with this email!"
+      return "já existe um usuário com este email!"
     }else {
       const passwordCrypto = crypto.createHmac(
         'sha256',
@@ -33,7 +33,7 @@ export async function createUserDB({ _id,name,email,password,url_graphcms }: IUs
 
     await user.save()
 
-    return "create user sucess!"
+    return "usuário criado com sucesso"
    }
   } catch(error) {
     console.log(error)
